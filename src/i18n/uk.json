@@ -1,0 +1,79 @@
+{
+  "welcome": "Ласкаво просимо до L.U.M.I.",
+  "search_placeholder": "Знайдіть майстра або послугу...",
+  "no_masters": "Немає доступних майстрів.",
+  "no_services": "Немає доступних послуг.",
+  "no_results": "Результатів не знайдено.",
+  "buttons": {
+    "signIn": "Вхід",
+    "signUp": "Реєстрація",
+    "logout": "Вийти",
+    "profile": "Профіль",
+    "search": "пошук"
+  },
+  "signOut": "Вийти",
+  "home": "Головна",
+  "calendar": "Календар",
+  "add": "Додати",
+  "master": {
+    "title": "Майстер",
+    "description": "Опис",
+    "location": "Локація",
+    "contact": "Контакт",
+    "services": "Послуги",
+    "reviews": "Відгуки",
+    "details": "Деталі",
+    "showLoadChart": "Показати завантаженість"
+  },
+  "service": {
+    "title": "Послуга",
+    "description": "Опис",
+    "price": "Ціна",
+    "duration": "Тривалість",
+    "bookNow": "Забронювати"
+  },
+  "review": {
+    "title": "Відгук",
+    "rating": "Рейтинг",
+    "comment": "Коментар",
+    "submitReview": "Надіслати відгук"
+  },
+  "booking": {
+    "title": "Бронювання",
+    "date": "Дата",
+    "time": "Час",
+    "confirmBooking": "Підтвердити бронювання",
+    "cancelBooking": "Скасувати бронювання"
+  },
+  "notifications": {
+    "title": "Сповіщення",
+    "newMessage": "У вас нове повідомлення від {{sender}}",
+    "newReview": "У вас новий відгук від {{reviewer}}"
+  },
+  "messages": {
+    "title": "Повідомлення",
+    "newMessage": "Нове повідомлення",
+    "send": "Надіслати",
+    "reply": "Відповісти",
+    "delete": "Видалити"
+  },
+  "settings": {
+    "title": "Налаштування",
+    "language": "Мова",
+    "notifications": "Сповіщення",
+    "privacy": "Конфіденційність",
+    "security": "Безпека"
+  },
+  "footer": {
+    "aboutUs": "Про нас",
+    "contactUs": "Зв'язатися з нами",
+    "termsOfService": "Умови використання",
+    "privacyPolicy": "Політика конфіденційності"
+  },
+  "profile": {
+    "myProfile": "Мій профіль",
+    "editProfile": "Редагувати профіль",
+    "logout": "Вийти"
+  },
+  "search": ""
+}

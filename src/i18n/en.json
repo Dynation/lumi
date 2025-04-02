@@ -1,0 +1,79 @@
+{
+  "welcome": "Welcome to L.U.M.I.",
+  "search_placeholder": "Find a master or service...",
+  "no_masters": "No masters available.",
+  "no_services": "No services available.",
+  "no_results": "No results found.",
+  "buttons": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logout": "Logout",
+    "profile": "Profile",
+    "search": "Search"
+  },
+  "signOut": "Sign Out",
+  "home": "Home",
+  "calendar": "Calendar",
+  "add": "Add",
+  "master": {
+    "title": "Master",
+    "description": "Description",
+    "location": "Location",
+    "contact": "Contact",
+    "services": "Services",
+    "reviews": "Reviews",
+    "details": "Details",
+    "showLoadChart": "Show Load Chart"
+  },
+  "service": {
+    "title": "Service",
+    "description": "Description",
+    "price": "Price",
+    "duration": "Duration",
+    "bookNow": "Book Now",
+    "showLoadChart": "Show Load Chart"
+  },
+  "review": {
+    "title": "Review",
+    "rating": "Rating",
+    "comment": "Comment",
+    "submitReview": "Submit Review"
+  },
+  "booking": {
+    "title": "Booking",
+    "date": "Date",
+    "time": "Time",
+    "confirmBooking": "Confirm Booking",
+    "cancelBooking": "Cancel Booking"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "newMessage": "You have a new message from {{sender}}",
+    "newReview": "You have a new review from {{reviewer}}"
+  },
+  "messages": {
+    "title": "Messages",
+    "newMessage": "New Message",
+    "send": "Send",
+    "reply": "Reply",
+    "delete": "Delete"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "security": "Security"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "profile": {
+    "myProfile": "My Profile",
+    "editProfile": "Edit Profile",
+    "logout": "Logout"
+  }
+}

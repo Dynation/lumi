@@ -1,0 +1,79 @@
+{
+  "welcome": "Bienvenue à L.U.M.I.",
+  "search_placeholder": "Trouvez un maître ou un service...",
+  "no_masters": "Aucun maître disponible.",
+  "no_services": "Aucun service disponible.",
+  "no_results": "Aucun résultat trouvé.",
+  "buttons": {
+    "signIn": "Connexion",
+    "signUp": "S'inscrire",
+    "logout": "Déconnexion",
+    "profile": "Profil",
+    "search": "Recherche"
+  },
+  "signOut": "Déconnexion",
+  "home": "Accueil",
+  "calendar": "Calendrier",
+  "add": "Ajouter",
+  "master": {
+    "title": "Maître",
+    "description": "Description",
+    "location": "Emplacement",
+    "contact": "Contact",
+    "services": "Services",
+    "reviews": "Avis",
+    "details": "Détails",
+    "showLoadChart": "Afficher le graphique de charge"
+  },
+  "service": {
+    "title": "Service",
+    "description": "Description",
+    "price": "Prix",
+    "duration": "Durée",
+    "bookNow": "Réserver maintenant"
+  },
+  "review": {
+    "title": "Avis",
+    "rating": "Évaluation",
+    "comment": "Commentaire",
+    "submitReview": "Soumettre un avis"
+  },
+  "booking": {
+    "title": "Réservation",
+    "date": "Date",
+    "time": "Heure",
+    "confirmBooking": "Confirmer la réservation",
+    "cancelBooking": "Annuler la réservation"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "newMessage": "Vous avez un nouveau message de {{sender}}",
+    "newReview": "Vous avez un nouvel avis de {{reviewer}}"
+  },
+  "messages": {
+    "title": "Messages",
+    "newMessage": "Nouveau message",
+    "send": "Envoyer",
+    "reply": "Répondre",
+    "delete": "Supprimer"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "notifications": "Notifications",
+    "privacy": "Confidentialité",
+    "security": "Sécurité"
+  },
+  "footer": {
+    "aboutUs": "À propos de nous",
+    "contactUs": "Nous contacter",
+    "termsOfService": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité"
+  },
+  "profile": {
+    "myProfile": "Mon profil",
+    "editProfile": "Modifier le profil",
+    "logout": "Se déconnecter"
+  },
+  "search": ""
+}
