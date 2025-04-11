@@ -1,19 +1,17 @@
-"use client"
 import { useState, useEffect } from 'react';
+import { SwatchIcon } from '@heroicons/react/24/outline';
 
-const themes = ['mint', 'pastel', 'dark', 'light'];
+const themes = ['mint', 'pastel', 'dark', 'light', 'blue', 'blue2', 'purple', 'orange'];
 
 const ThemeSwitcher = () => {
   const [theme, setTheme] = useState<string>('mint');
 
-  // Ініціалізація теми при завантаженні
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'mint';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
-  // Функція для зміни теми
   const toggleTheme = () => {
     const nextTheme = themes[(themes.indexOf(theme) + 1) % themes.length];
     setTheme(nextTheme);
@@ -24,9 +22,10 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-md text-white transition-colors duration-300"
+      className="p-2 rounded-md hover:bg-[var(--button-color)] transition"
+      title={`Theme: ${theme}`}
     >
-      {theme.charAt(0).toUpperCase() + theme.slice(1)}
+      <SwatchIcon className="w-6 h-6 text-[var()]" />
     </button>
   );
 };

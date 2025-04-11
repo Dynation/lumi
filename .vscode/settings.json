@@ -1,7 +1,27 @@
 {
-    "i18n-ally.localesPaths": [
-        "src/i18n"
-    ],
-    "i18n-ally.keystyle": "nested",
-    "bitoAI.codeCompletion.enableAutoCompletion": false
+  "i18n-ally.localesPaths": ["src/i18n"],
+  "i18n-ally.keystyle": "nested",
+
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html", // ← додай це
+    "html": "html",
+    "javascript": "javascript",
+    "javascriptreact": "javascript",
+    "typescript": "javascript",
+    "typescriptreact": "javascript",
+    "css": "css"
+  },
+
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  "css.autoValidation": "Always",
+
+  "css.styleSheets": [], // <-- це не потрібно
+  "tailwindCSS.experimental.classRegex": [
+    ["tw`([^`]*)", 1],
+    ["tw\\(([^)]*)\\)", 1],
+    ["cn\\(([^)]*)\\)", 1] // якщо використовуєш clsx/cn
+  ]
 }

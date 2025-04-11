@@ -14,8 +14,8 @@ interface MasterCardProps {
   defaultName: string;
   defaultLocation: string;
   defaultServices: string[];
-  defaultRating: number;
-  defaultPhoneNumber: string;
+  defaultRating?: number;
+   defaultPhoneNumber: string;
   phoneNumber: string;
   onDetailsClick: () => void;
   onClick?: () => void; 
@@ -41,14 +41,16 @@ const MasterCard: React.FC<MasterCardProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="rounded-4xl h-80 shadow-lg overflow-hidden bg-gradient-to-b from-[--button-color] to-[--background-color] text-[var(--text-color)] transition-transform duration-300 hover:scale-105">
+    <div className="bg-gradient-to-b from-(--grad-start) via-(--background-color) to-(--grad-end) rounded-lg rounded-4xl h-80 shadow-lg overflow-hidden text-[var(--text-color)] transition-transform duration-300 hover:scale-105">
+      <div className="w-full h-32 flex justify-center items-center overflow-hidden rounded-lg"> 
       <Image
-      src={imageUrl}
-      alt={name}
-      width={110}
-      height={110}
-      className="w-full h-32 object-contain"
+        src={imageUrl}
+        alt={name}
+        width={110}
+        height={110}
+        className="object-cover rounded-lg"
       />
+      </div>
       <div className="p-4 text-center">
       <h2 className="text-xl font-semibold">{name}</h2>
       <div className="flex items-center gap-1 text-sm">

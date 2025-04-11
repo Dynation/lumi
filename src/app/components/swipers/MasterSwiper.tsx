@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import { Pagination } from "swiper/modules";
 
 import styles from "./MasterSwiper.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import MasterCard from "../MasterCard";
+import SkeletonBlock from "../SkeletonBlock";
 
 interface Master {
   name: string;
@@ -21,6 +23,7 @@ interface Master {
 interface Props {
   selectedService: string | null;
   onDetailsClick: (master: Master) => void;
+  onMasterSwipe: (master: Master) => void;
 }
 
 const ALL_SERVICES = [
@@ -33,12 +36,13 @@ const generateRandomServices = () => {
   return shuffled.slice(0, Math.floor(Math.random() * 3) + 1);
 };
 
-const MasterSwiper: React.FC<Props> = ({ selectedService, onDetailsClick }) => {
+const MasterSwiper: React.FC<Props> = ({ selectedService, onDetailsClick, onMasterSwipe }) => {
   const [masters, setMasters] = useState<Master[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMasters = async () => {
-      const res = await fetch(`https://randomuser.me/api/?results=10`);
+      const res = await fetch('https://randomuser.me/api/?gender=female&results=10&nat=ca');
       const data = await res.json();
 
       interface User {
@@ -58,6 +62,8 @@ const MasterSwiper: React.FC<Props> = ({ selectedService, onDetailsClick }) => {
       }));
 
       setMasters(mapped);
+      setIsLoading(false);
+
     };
 
     fetchMasters();
@@ -67,11 +73,18 @@ const MasterSwiper: React.FC<Props> = ({ selectedService, onDetailsClick }) => {
     ? masters.filter((m) => m.services.includes(selectedService))
     : masters;
 
+  const handleSlideChange = (swiper: SwiperType) => {
+    const index = swiper.activeIndex;
+    const master = filteredMasters[index];
+    if (master) onMasterSwipe(master);
+  };
+
   return (
-    <div className="w-full py-6">
+    <div className="w-full py-4 px-2 ">
       <Swiper
         spaceBetween={20}
         slidesPerView={1.2}
+        onSlideChange={handleSlideChange}
         breakpoints={{
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
@@ -84,8 +97,14 @@ const MasterSwiper: React.FC<Props> = ({ selectedService, onDetailsClick }) => {
         modules={[Pagination]}
         className={styles.swiperContainer}
       >
-        {filteredMasters.map((master, index) => (
-          <SwiperSlide key={index} className={styles.swiperSlide}>
+{isLoading
+  ? Array.from({ length: 3 }).map((_, idx) => (
+      <SwiperSlide key={idx} className={styles.swiperSlide}>
+        <SkeletonBlock height="h-60" width="w-full" className="rounded-xl" />
+      </SwiperSlide>
+    ))
+  : filteredMasters.map((master, index) => (
+      <SwiperSlide key={index} className={styles.swiperSlide}>
         <MasterCard
           name={master.name}
           location={master.location}
@@ -101,12 +120,12 @@ const MasterSwiper: React.FC<Props> = ({ selectedService, onDetailsClick }) => {
           defaultRating={0}
           defaultPhoneNumber="000-000-0000"
         />
-          </SwiperSlide>
-        ))}
+      </SwiperSlide>
+    ))}
+
       </Swiper>
     </div>
   );
 };
 
 export default MasterSwiper;
-
