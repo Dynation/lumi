@@ -6,27 +6,29 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import L from 'leaflet';
+import { useGeocoding } from '@/hooks/useGeocoding';
 
-// Типи пропсів, які ми хочемо мати гнучкими для будь-якої карти
+// 🧩 Типи пропсів, гнучко підлаштовані для різних сценаріїв
 interface MapBaseProps {
-  position: { lat: number; lng: number };
-  radius: number;
-  editable?: boolean;
-  tooltip?: boolean;
-  onPositionChange?: (coords: { lat: number; lng: number }) => void;
+  position: { lat: number; lng: number }; // початкова позиція
+  radius: number;                         // радіус у кілометрах
+  editable?: boolean;                     // чи можна рухати маркер
+  tooltip?: boolean;                      // чи показувати тултіп з адресою
+  onPositionChange?: (coords: { lat: number; lng: number }) => void; // зворотній зв'язок
 }
 
-// Компонент для примусової перерисовки Leaflet-карти після монтування
+// 🔁 Форсує оновлення розміру карти після монтування
 const ForceResize = () => {
   const map = useMap();
   useEffect(() => {
     setTimeout(() => {
-      map.invalidateSize();
-    }, 150); // Чекаємо, поки DOM повністю відрендериться
+      map.invalidateSize(); // оновлення розмірів карти
+    }, 150);
   }, [map]);
   return null;
 };
 
+// 🌍 Основний компонент карти
 export default function MapBase({
   position,
   radius,
@@ -34,27 +36,16 @@ export default function MapBase({
   tooltip = false,
   onPositionChange,
 }: MapBaseProps) {
-  const [location, setLocation] = useState(position); // поточна позиція маркера
-  const [locationName, setLocationName] = useState(''); // збережене ім'я міста/місця
-  const markerRef = useRef<L.Marker>(null); // посилання на сам маркер
+  const [location, setLocation] = useState(position);        // поточна позиція
+  const markerRef = useRef<L.Marker>(null);                  // реф на маркер
+  const { locationName, fetchAddress } = useGeocoding();
 
-  // Якщо включено тултіп — ми запитуємо адресу за координатами
+  // ⛳ Якщо активовано тултіп — робимо reverse геокодування
   useEffect(() => {
     if (tooltip) fetchAddress(location);
-  }, [location, tooltip]);
+  }, [location, tooltip, fetchAddress]);
 
-  // Отримання адреси з nominatim
-  const fetchAddress = async (coords: { lat: number; lng: number }) => {
-    try {
-      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${coords.lat}&lon=${coords.lng}`);
-      const data = await res.json();
-      if (data?.display_name) setLocationName(data.display_name);
-    } catch (err) {
-      console.error('Не вдалося отримати адресу', err);
-    }
-  };
-
-  // Подія при завершенні перетягування маркера
+  // 🔄 Подія перетягування маркера
   const handleDragEnd = () => {
     const marker = markerRef.current;
     if (marker) {
@@ -62,7 +53,7 @@ export default function MapBase({
       const coords = { lat: newPos.lat, lng: newPos.lng };
       setLocation(coords);
       if (onPositionChange) onPositionChange(coords);
-      fetchAddress(coords);
+      if (tooltip) fetchAddress(coords);
     }
   };
 
@@ -74,23 +65,28 @@ export default function MapBase({
       className="w-full h-full relative z-0"
     >
       <ForceResize />
+
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution="© OpenStreetMap contributors"
       />
 
-      {/* Маркер: draggable тільки якщо editable */}
+      {/* 📍 Маркер з drag, якщо editable */}
       <Marker
         position={location}
         draggable={editable}
         ref={markerRef}
         eventHandlers={editable ? { dragend: handleDragEnd } : undefined}
       >
-        {/* Постійний тултіп з адресою */}
-        {tooltip && <Tooltip direction="top" offset={[0, -10]} permanent>{locationName}</Tooltip>}
+        {/* 💬 Тултіп з адресою */}
+        {tooltip && locationName && (
+          <Tooltip direction="top" offset={[0, -10]} permanent>
+            {locationName}
+          </Tooltip>
+        )}
       </Marker>
 
-      {/* Коло радіусу в км */}
+      {/* 🔵 Коло радіусу */}
       <Circle
         center={location}
         radius={radius * 1000}

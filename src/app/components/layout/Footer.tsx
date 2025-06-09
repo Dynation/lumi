@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
         <FaCalendar size={24} />
         <span className="text-xs">{t('calendar')}</span>
       </Link>
-      <Link href="/search" className="flex flex-col items-center justify-center">
+      <Link href="/finder" className="flex flex-col items-center justify-center">
         <FaSearch size={24} />
         <span className="text-xs">{t('buttons.search')}</span>
       </Link>

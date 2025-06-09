@@ -63,7 +63,7 @@ const ServiceSwiper: React.FC<Props> = ({ onServiceSelect }) => {
               onClick={() => onServiceSelect(service)}
               className="cursor-pointer"
             >
-              <div className="flex items-center justify-center h-16 rounded-lg text-sm font-medium transition-all bg-gradient-to-b from-[var(--grad-start)] via-[var(--background-color)] to-[var(--grad-end)] hover:scale-105 hover:shadow">
+              <div className="flex items-center justify-center h-16 rounded-lg text-sm text-[var(--text-color)] font-medium transition-all bg-gradient-to-b from-[var(--grad-start)] via-[var(--background-color)] to-[var(--grad-end)] hover:scale-105 hover:shadow">
                 {service}
               </div>
             </SwiperSlide>
